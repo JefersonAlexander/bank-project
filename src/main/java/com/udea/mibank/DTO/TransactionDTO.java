@@ -11,6 +11,7 @@ public class TransactionDTO {
     private String receiverAccountNumber;
     private Double amount;
     private LocalDateTime timestamp;
+    public Object getAmount;
 
     public TransactionDTO() {
     }

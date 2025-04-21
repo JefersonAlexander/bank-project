@@ -1,5 +1,6 @@
 package com.udea.mibank.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,6 +53,7 @@ public class TransactionService {
         transaction.setSenderAccountNumber(sender.getAccountNumber());
         transaction.setReceiverAccountNumber(receiver.getAccountNumber());
         transaction.setAmount(transactionDTO.getAmount());
+        transaction.setTimestamp(LocalDateTime.now());
         transaction= transactionRepository.save(transaction);
 
         //Devolver la transaccion creada como un DTO
