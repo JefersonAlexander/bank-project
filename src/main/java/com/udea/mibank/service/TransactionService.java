@@ -67,13 +67,14 @@ public class TransactionService {
     }
 
     public List<TransactionDTO> getTransactionsForAccount(String accountNumber) {
-        List<Transaction> transactions = transactionRepository.findBySenderAccountNumberOrReceiverAccountNumber(accountNumber,accountNumber);
+        List<Transaction> transactions = transactionRepository.findBySenderAccountNumberOrReceiverAccountNumber(accountNumber, accountNumber);
         return transactions.stream().map(transaction -> {
             TransactionDTO dto = new TransactionDTO();
             dto.setId(transaction.getId());
             dto.setSenderAccountNumber(transaction.getSenderAccountNumber());
             dto.setReceiverAccountNumber(transaction.getReceiverAccountNumber());
             dto.setAmount(transaction.getAmount());
+            dto.setTimestamp(transaction.getTimestamp()); 
             return dto;
         }).collect(Collectors.toList());
     }
